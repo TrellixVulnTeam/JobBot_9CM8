@@ -67,6 +67,10 @@ def save():
 
 	conv.insert_one({"cand":userText, "bot":botResponse, "date":dt_string})
 
+@app.route("/success")
+def success():
+	return render_template("success.html")
+
 
 # Recruteur ------------------------------------------------------------------------------------------------
 
@@ -86,6 +90,12 @@ def recruiter_new_questions():
 	return render_template("questions.html")
 
 # Postulant ------------------------------------------------------------------------------------------------
+@app.route("/new_applicant")
+def new_applicant():
+
+	applicants = db.applicant.find()[0]
+
+	return render_template("new_applicant.html", applicants=applicants)
 
 @app.route("/applicant")
 def applicant():
