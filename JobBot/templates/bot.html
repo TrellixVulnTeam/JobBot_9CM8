@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html> -->
+<html>
+  <title>JobBot</title>
+
+  <head>
+    <!-- css / js w3 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='avatar.png') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- css / js maison -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <center>
+      <h1>
+        Votre Chatbot professionnel !
+      </h1>
+    </center>
+
+    <div class="box"></div>
+    <div class="boxed">
+
+      <div>
+        <div id="chatbox">
+          <p class="botText">
+            <span>Bonjour, je suis JobBot, je suis la première étape à la candidature au poste de community manager !</span>
+          </p>
+        </div>
+
+        <div id="userInput">
+          <input id="textInput" type="text" name="msg" placeholder="Message" />
+        </div>
+
+      </div>
+    </div>
+
+    <center style="margin-top: 10px"><button class="w3-button w3-green">Enregistrer et envoyer la conversation</button></center>
+    <center style="margin-top: 10px"><a href="/applicant"><button class="w3-button w3-red">Quitter la conversation</button></a></center>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='myScript.js') }}"></script>
+
+  </body>
+</html>
