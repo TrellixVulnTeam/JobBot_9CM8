@@ -46,10 +46,10 @@
 	</div>
 	<div class="w3-bar-block">
 		<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-		<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Mon espace personnel</a>
+		<a href="/applicant" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Mon espace personnel</a>
 		<a href="/joblist" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Voir ma joblist</a>
 		<a href="/notifications" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Voir mes notifications</a>
-		<a href="/informations" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Modifier mes informations</a><br><br>
+		<a href="#" class="w3-bar-item w3-button w3-blue w3-padding"><i class="fa fa-cog fa-fw"></i>  Modifier mes informations</a><br><br>
 	</div>
 </nav>
 
@@ -59,46 +59,59 @@
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 16px; padding-top: 50px; padding-bottom: 20px">
-        <h5>Nouveautés</h5>
-        <table class="w3-table w3-striped w3-white">
-          <tr>
-            <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-            <td>Nouveau poste qui pourrait vous intéresser :</td>
-            <td><a href="/offre"><i>Community manager - Orange - Paris</i></a></td>
-          </tr>
-        </table>
+      <div class="w3-panel">
+        <div class="w3-row-padding w3-white">
+          <h5>Vos informations :</h5>
+          <div><span>Votre nom : </span><strong>{{ applicants["nom"] }}</strong></div>
+          <div><span>Votre prénom : </span><strong>{{ applicants["prenom"] }}</strong></div>
+          <div><span>Votre email : </span><strong>{{ applicants["mail"] }}</strong></div>
+        </div>
+        <hr>
+        <div class="w3-row-padding w3-white">
+          <h5>Le type d'emploi que vous recherchez :</h5>
+          <div><strong>{{ applicants["emploi_recherche"] }}</strong></div>
+        </div>
+        <hr>
+
+        <h5>Modifier vos informations :</h5>
+        <form action="submit" class="w3-form">
+          <table class="w3-table w3-white">
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Modifier votre nom : </label></td>
+                <td><input type="text" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Modifier votre prénom : </label></td>
+                <td><input type="text" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Modifier votre mail : </label></td>
+                <td><input type="mail" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Modifier le type d'emploi recherché : </label></td>
+                <td><input type="text" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+          </table>
+        </form>
+      </div>
     </div>
   </div>
- </div>
-
-
-<!-- Conversation JobBot -->
-  <div class="w3-panel">
-    <div class="w3-row-padding w3-white">
-		{% if convs[0] %}
-		<div><strong>Voici votre dernière conversation avec JobBot :</strong></div>
-		{% for conv in convs %}
-			<hr>
-			<div><strong>Candidat : </strong>{{ conv["cand"] }}</div>
-			<hr>
-			<div><strong>JobBot : </strong>{{ conv["bot"] }}</div>
-		{% endfor %}
-
-		{% else %}
-			<div>Il n'y a rien à afficher</div>
-		{% endif %}
-		<hr>
-		<center style="padding-bottom: 20px;">
-			<a href="/bot" style="text-decoration: none"><button class="w3-button w3-green">Relancer</button></a>
-			<a href="/applicant" style="text-decoration: none"><button class="w3-button w3-red">Archiver l'offre</button></a>
-		</center>
-    </div>
-  </div>
-
-  <hr>
 </div>
 
 <script>

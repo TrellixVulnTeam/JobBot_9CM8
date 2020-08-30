@@ -48,7 +48,9 @@ trainer.train(conversation)
 def home():
 	return render_template("home.html")
 
+# ==========================================================================================================
 # Bot -----------------------------------------------------------------------------------------------------
+# ==========================================================================================================
 
 @app.route("/bot")
 def index():
@@ -72,7 +74,9 @@ def success():
 	return render_template("success.html")
 
 
+# ==========================================================================================================
 # Recruteur ------------------------------------------------------------------------------------------------
+# ==========================================================================================================
 
 @app.route("/recruiter")
 def recruiter():
@@ -82,14 +86,17 @@ def recruiter():
 
 	return render_template("recruiter.html", convs=convs, recruiters=recruiters)
 
-# Nouvelles questions du Recruteur ------------------------------------------------------------------------------------------------
+# Nouvelles questions du Recruteur -------------------------------------------------------------------------
 
 @app.route("/recruiter_new_questions")
 def recruiter_new_questions():
 
 	return render_template("questions.html")
 
+# ==========================================================================================================
 # Postulant ------------------------------------------------------------------------------------------------
+# ==========================================================================================================
+
 @app.route("/new_applicant")
 def new_applicant():
 
@@ -122,6 +129,24 @@ def offre():
 	offres = db.offre.find()[0]
 
 	return render_template("offre.html", offres=offres)
+
+# notifications ------------------------------------------------------------------------------------------------
+
+@app.route("/notifications")
+def notifications():
+
+	applicants = db.applicant.find()[0]
+
+	return render_template("notifications.html", applicants=applicants)
+
+# informations -------------------------------------------------------------------------------------------------
+
+@app.route("/informations")
+def informations():
+
+	applicants = db.applicant.find()[0]
+
+	return render_template("informations.html", applicants=applicants)
 
 
 # =========================================================================================================
