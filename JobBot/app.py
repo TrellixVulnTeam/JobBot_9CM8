@@ -86,6 +86,34 @@ def recruiter():
 
 	return render_template("recruiter.html", convs=convs, recruiters=recruiters)
 
+# Conversations non-lues -------------------------------------------------------------------------
+
+@app.route("/new_conv")
+def new_conv():
+
+	return render_template("new_conv.html")
+
+# Relances de candidats -------------------------------------------------------------------------
+
+@app.route("/reminder")
+def reminder():
+
+	return render_template("reminder.html")
+
+# Mes offres -------------------------------------------------------------------------
+
+@app.route("/my_jobs")
+def my_jobs():
+
+	return render_template("my_jobs.html")
+
+# Nouvelle offre -------------------------------------------------------------------------
+
+@app.route("/new_job")
+def new_job():
+
+	return render_template("new_job.html")
+
 # Nouvelles questions du Recruteur -------------------------------------------------------------------------
 
 @app.route("/recruiter_new_questions")
