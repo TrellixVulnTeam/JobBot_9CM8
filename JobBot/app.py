@@ -86,40 +86,70 @@ def recruiter():
 
 	return render_template("recruiter.html", convs=convs, recruiters=recruiters)
 
+# Recruteur vide -------------------------------------------------------------------------
+
+@app.route("/new_recruiter")
+def new_recruteur():
+
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("new_recruiter.html", recruiters=recruiters)
+
 # Conversations non-lues -------------------------------------------------------------------------
 
 @app.route("/new_conv")
 def new_conv():
 
-	return render_template("new_conv.html")
+	convs = conv.find()
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("new_conv.html", convs=convs, recruiters=recruiters)
 
 # Relances de candidats -------------------------------------------------------------------------
 
 @app.route("/reminder")
 def reminder():
 
-	return render_template("reminder.html")
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("reminder.html", recruiters=recruiters)
 
 # Mes offres -------------------------------------------------------------------------
 
 @app.route("/my_jobs")
 def my_jobs():
 
-	return render_template("my_jobs.html")
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("my_jobs.html", recruiters=recruiters)
 
 # Nouvelle offre -------------------------------------------------------------------------
 
 @app.route("/new_job")
 def new_job():
 
-	return render_template("new_job.html")
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("new_job.html", recruiters=recruiters)
 
 # Nouvelles questions du Recruteur -------------------------------------------------------------------------
 
 @app.route("/recruiter_new_questions")
 def recruiter_new_questions():
 
-	return render_template("questions.html")
+	recruiters = db.recruiter.find()[0]
+
+	return render_template("questions.html", recruiters=recruiters)
+
+# Contacter le candidat -------------------------------------------------------------------------
+
+@app.route("/contact")
+def contact():
+
+	recruiters = db.recruiter.find()[0]
+	applicants = db.applicant.find()[0]
+
+	return render_template("contact.html", recruiters=recruiters, applicants=applicants)
 
 # ==========================================================================================================
 # Postulant ------------------------------------------------------------------------------------------------
