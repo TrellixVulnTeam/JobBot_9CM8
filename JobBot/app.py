@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask import Flask, render_template, request
 
+from flask_mail import Mail, Message
+
 from pymongo import MongoClient
 
 from chatterbot import ChatBot
@@ -8,25 +10,43 @@ from chatterbot.trainers import ListTrainer
 
 app = Flask(__name__)
 
+# =========================================================================================================
+# 		Connexion à la bdd
+# =========================================================================================================
+
 client = MongoClient("mongodb://127.0.0.1:27017")
 db = client.jobbot #Le nom de la base de données
 conv = db.conv #Le nom de la collection
 applicant = db.applicant
 recruiter = db.recruiter
 offre = db.offre
+questions = db.questions
 
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M")
 
 bot = ChatBot("JobBot", read_only=True)
 
+# =========================================================================================================
+# 		Gestion des mails
+# =========================================================================================================
+
+mail= Mail(app)
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'jobbot@gmail.com'
+app.config['MAIL_PASSWORD'] = '*****'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 # =========================================================================================================
 # 		Trainer du bot
 # =========================================================================================================
 conversation = [
 	"Bonjour",
-	"Bienvenue sur le site carrière d'Orange, quel est l'expérience dont vous bénéficiez pour le poste de community manager ?",
+	"Bienvenue sur le site carrière d'Orange, quelle est l'expérience dont vous bénéficiez pour le poste de community manager ?",
 	"J'ai deux ans d'expérience à ce poste",
 	"C'est noté, et quel est votre diplôme le plus haut concernant ce poste ?",
 	"J'ai validé un Master en gestion de communauté",
@@ -73,6 +93,22 @@ def save():
 def success():
 	return render_template("success.html")
 
+# ==========================================================================================================
+# Mail -----------------------------------------------------------------------------------------------------
+# ==========================================================================================================
+
+@app.route("/mail")
+def mail():
+
+	content = request.args.get('content')
+	applicant = request.args.get('applicant_mail')
+
+	msg = Message('Message de votre recruteur', sender = 'jobbot@gmail.com', recipients = [applicant])
+	msg.body = content
+
+	mail.send(msg)
+
+	return "Sent"
 
 # ==========================================================================================================
 # Recruteur ------------------------------------------------------------------------------------------------
@@ -138,8 +174,9 @@ def new_job():
 def recruiter_new_questions():
 
 	recruiters = db.recruiter.find()[0]
+	offres = db.offre.find()[0]
 
-	return render_template("questions.html", recruiters=recruiters)
+	return render_template("questions.html", recruiters=recruiters, offres=offres)
 
 # Contacter le candidat -------------------------------------------------------------------------
 

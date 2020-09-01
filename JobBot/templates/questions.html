@@ -59,26 +59,69 @@
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+  <div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 16px; padding-top: 50px; padding-bottom: 20px">
+      <div class="w3-panel">
+          <h5>Le poste sur lequel vous intervenez :</h5>
+        <div class="w3-row-padding w3-white">
+          <div><span>Intitulé : </span><strong>{{ offres["intitule"] }}</strong></div>
+          <div><span>Descriptif : </span><strong>{{ offres["descriptif"] }}</strong></div>
+          <div><span>Salaire : </span><strong>{{ offres["paye"] }}</strong></div>
+          <div><span>Début souhaité : </span><strong>{{ offres["start"] }}</strong></div>
+        </div>
 
-<!-- Blocks infos -->
-	<div class="w3-row-padding w3-margin-bottom" style="padding-top: 50px">
-		<h5>Statistiques</h5>
-		<p>Nouveaux visiteurs</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
-		</div>
+        <hr>
 
-		<p>Candidatures</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
-		</div>
+        <h5>Questions actuelles :</h5>
+        <div class="w3-row-padding w3-white">
+          <div><span>Première question : </span><strong>Quelle est l'expérience dont vous bénéficiez pour le poste de community manager ?</strong></div>
+          <div><span>Deuxième question : </span><strong>Quel est votre diplôme le plus haut concernant ce poste ?</strong></div>
+          <div><span>Troisième question : </span><strong>Souhaitez-vous nous faire part d'autre chose ?</strong></div>
+          <div><span>Quatrième question : </span><strong>*Vous pouvez ajouter une question ici*</strong></div>
+        </div>
 
-		<p>Pourcentage de réussite</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
-		</div>
-	</div>
+        <hr>
 
+        <h5>Modifier les questions :</h5>
+        <form action="submit" class="w3-form">
+          <table class="w3-table w3-white">
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Première question : </label></td>
+                <td><input type="text" name="name" id="name" required style="width: 500px;"></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Deuxième question : </label></td>
+                <td><input type="text" name="name" id="name" required style="width: 500px;"></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Troisième question : </label></td>
+                <td><input type="text" name="name" id="name" required style="width: 500px;"></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Quatrième question : </label></td>
+                <td><input type="text" name="name" id="name" required style="width: 500px;"></td>
+              </div>
+            </tr>
+
+          </table>
+          <hr>
+            <a href="/recruiter"><button class="w3-button w3-green">Modifier</button></a>
+            <a href="/recruiter"><button class="w3-button w3-red">Annuler</button></a>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

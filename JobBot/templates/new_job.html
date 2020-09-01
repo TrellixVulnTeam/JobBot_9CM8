@@ -59,28 +59,52 @@
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+  <div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 16px; padding-top: 50px; padding-bottom: 20px">
+      <div class="w3-panel">
 
-<!-- Blocks infos -->
-	<div class="w3-row-padding w3-margin-bottom" style="padding-top: 50px">
-		<h5>Statistiques</h5>
-		<p>Nouveaux visiteurs</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
-		</div>
+        <h5>Créer une nouvelle offre :</h5>
+        <form action="submit" class="w3-form">
+          <table class="w3-table w3-white">
 
-		<p>Candidatures</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
-		</div>
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Intitulé de l'offre : </label></td>
+                <td><input type="text" name="name" id="name" required></td>
+              </div>
+            </tr>
 
-		<p>Pourcentage de réussite</p>
-		<div class="w3-grey">
-			<div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
-		</div>
-	</div>
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Descriptif de l'offre : </label></td>
+                <td><textarea type="text" name="name" id="name" required rows="10" cols="100"></textarea></td>
+              </div>
+            </tr>
 
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Salaire : </label></td>
+                <td><input type="mail" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-example">
+                <td><label for="name">Date de début souhaitée : </label></td>
+                <td><input type="text" name="name" id="name" required></td>
+              </div>
+            </tr>
+
+          </table>
+          <hr>
+            <a href="/recruiter"><button class="w3-button w3-green">Enregistrer</button></a>
+            <a href="/recruiter"><button class="w3-button w3-red">Annuler</button></a>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");

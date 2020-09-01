@@ -1,5 +1,4 @@
 function getBotResponse() {
-  console.log("in getBotResponse")
 
   // Récupération du texte en brut depuis l'input
   var rawText = $("#textInput").val();
